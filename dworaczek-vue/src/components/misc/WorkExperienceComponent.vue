@@ -1,6 +1,6 @@
 <script setup>
 import PanelComponent from '@/components/core/PanelComponent.vue';
-import { defineProps, ref, shallowRef } from 'vue';
+import { ref, shallowRef } from 'vue';
 
 const props = defineProps({
     workExperience: {
