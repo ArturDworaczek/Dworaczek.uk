@@ -1,18 +1,3 @@
-<script setup>
-import { computed } from 'vue';
-import TwoToggleButtonComponent from '@/components/ui/buttons/TwoToggleButtonComponent.vue';
-
-const prefersLightMode = computed(() => window.matchMedia('(prefers-color-scheme: light)').matches);
-
-function toggleViewModes() {
-    if (document.body.getAttribute('data-theme') === 'dark') {
-        document.body.setAttribute('data-theme', 'light');
-    } else {
-        document.body.setAttribute('data-theme', 'dark');
-    }
-}
-</script>
-
 <template>
     <header class="header">
         <!-- TODO: Add this back when scope increases -->
@@ -28,6 +13,21 @@ function toggleViewModes() {
         />
     </header>
 </template>
+
+<script setup>
+import { computed } from 'vue';
+import TwoToggleButtonComponent from '@/components/ui/buttons/TwoToggleButtonComponent.vue';
+
+const prefersLightMode = computed(() => window.matchMedia('(prefers-color-scheme: light)').matches);
+
+function toggleViewModes() {
+    if (document.body.getAttribute('data-theme') === 'dark') {
+        document.body.setAttribute('data-theme', 'light');
+    } else {
+        document.body.setAttribute('data-theme', 'dark');
+    }
+}
+</script>
   
 <style lang="less" scoped>
 .header {

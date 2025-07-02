@@ -29,10 +29,12 @@ const showModal = ref(false);
 
 function backHandler() {
     showModal.value = false;
+    document.body.style.overflow = 'auto'; // Restore background scroll
 }
 
 function showModalHandler() {
     showModal.value = true;
+    document.body.style.overflow = 'hidden'; // Restore background scroll
 }
 defineExpose({ showModalHandler });
 
