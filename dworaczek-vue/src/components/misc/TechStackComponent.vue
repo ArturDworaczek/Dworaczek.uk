@@ -1,6 +1,5 @@
 <script setup>
 import PanelComponent from '@/components/core/PanelComponent.vue';
-import { defineProps } from 'vue';
 
 const props = defineProps({
     techStack: {

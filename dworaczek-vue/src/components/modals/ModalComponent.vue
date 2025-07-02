@@ -1,5 +1,21 @@
+<template>
+    <Transition name="modal-transition">
+        <div v-show="showModal" ref="modalRef" class="modal">
+            <div class="modal-content">
+                <div class="modal-heading">
+                    <button class="modal-back-button transparent-button" @click="backHandler"><v-icon name="md-arrowback-round" scale="1.5"/></button>
+                    <h1 class="modal-heading-text">{{ props.headingText }}</h1>
+                </div>
+                <div class="modal-content-slot">
+                    <slot name="content" />
+                </div>
+            </div>
+        </div>
+    </Transition>
+</template>
+
 <script setup>
-import { defineProps, defineExpose, onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 const props = defineProps({
     headingText: {
@@ -24,22 +40,6 @@ onMounted(() => {
     document.body.appendChild(modalRef.value);
 });
 </script>
-
-<template>
-    <Transition name="modal-transition">
-        <div v-show="showModal" ref="modalRef" class="modal">
-            <div class="modal-content">
-                <div class="modal-heading">
-                    <button class="modal-back-button transparent-button" @click="backHandler"><v-icon name="md-arrowback-round" scale="1.5"/></button>
-                    <h1 class="modal-heading-text">{{ props.headingText }}</h1>
-                </div>
-                <div class="modal-content-slot">
-                    <slot name="content" />
-                </div>
-            </div>
-        </div>
-    </Transition>
-</template>
 
 <style lang="less" scoped>
 .modal {

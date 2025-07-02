@@ -1,27 +1,3 @@
-<script setup>
-import PanelComponent from '@/components/core/PanelComponent.vue'
-import ListComponent from '@/components/core/ListComponent.vue';
-import { defineProps } from 'vue';
-
-const props = defineProps({
-    company: {
-        type: Object,
-        required: true,
-        default: () => { return { logo: '', name: '', role: '', service: '', description: '' } }
-    },
-    responsibilitiesList: {
-        type: Array,
-        required: true,
-        default: () => [ { icon: '', text: '' } ]
-    },
-    achievementList: {
-        type: Array,
-        required: true,
-        default: () => [ { icon: '', text: '' } ]
-    }
-});
-</script>
-
 <template>
     <div class="modal-work-experience">
         <div class="modal-company-info border">
@@ -54,6 +30,29 @@ const props = defineProps({
         </div>
     </div>
 </template>
+
+<script setup>
+import PanelComponent from '@/components/core/PanelComponent.vue'
+import ListComponent from '@/components/core/ListComponent.vue';
+
+const props = defineProps({
+    company: {
+        type: Object,
+        required: true,
+        default: () => { return { logo: '', name: '', role: '', service: '', description: '' } }
+    },
+    responsibilitiesList: {
+        type: Array,
+        required: true,
+        default: () => [ { icon: '', text: '' } ]
+    },
+    achievementList: {
+        type: Array,
+        required: true,
+        default: () => [ { icon: '', text: '' } ]
+    }
+});
+</script>
 
 <style lang="less" scoped>
 .modal-work-experience {
