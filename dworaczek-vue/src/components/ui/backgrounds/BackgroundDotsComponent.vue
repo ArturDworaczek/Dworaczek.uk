@@ -1,106 +1,122 @@
 <script setup>
-import { onMounted, ref, computed } from 'vue';
+import { onMounted, onBeforeUnmount, ref, computed } from 'vue';
 
 const prefersLightMode = computed(() => document.body.getAttribute('data-theme') === 'light');
 const backgroundRef = ref(null);
-const dots = [];
-const DOT_COUNT = 250; // Amount of dots on screen
-const MAX_DISTANCE = 100; // Maximum distance to connect dots
-const SPEED = 0.5; // Speed of dot movement
-var ctx = null; // Global context for the background.
 
-// Resize canvas background.
+const DOT_COUNT = 250;
+const MAX_DISTANCE = 100;
+const SPEED = 0.5;
+
+let dots = [];
+let ctx = null;
+let animationFrameId = null;
+
+// Resize canvas to full viewport
 function resizeBackground() {
-    if (backgroundRef.value?.width && backgroundRef.value?.height) {
-        backgroundRef.value.width = window.innerWidth - 10;
-        backgroundRef.value.height = window.innerHeight;
-    }
+  if (!backgroundRef.value) return;
+  backgroundRef.value.width = window.innerWidth;
+  backgroundRef.value.height = window.innerHeight;
 }
 
 // Initialize dots with random positions and velocities
 function initBackgroundDots() {
-    for (let i = 0; i < DOT_COUNT; i++) {
-        dots.push({
-            x: Math.random() * backgroundRef.value.width,
-            y: Math.random() * backgroundRef.value.height,
-            vx: (Math.random() - 0.5) * SPEED,
-            vy: (Math.random() - 0.5) * SPEED
-        });
-    }
+  dots = Array.from({ length: DOT_COUNT }, () => ({
+    x: Math.random() * backgroundRef.value.width,
+    y: Math.random() * backgroundRef.value.height,
+    vx: (Math.random() - 0.5) * SPEED,
+    vy: (Math.random() - 0.5) * SPEED,
+  }));
 }
 
 // Animation loop
-function initAnimation() {
-    if (backgroundRef.value?.width && backgroundRef.value?.height) {
-        ctx.clearRect(0, 0, backgroundRef.value.width, backgroundRef.value.height);
-        
-        // Draw dots and lines
-        for (let i = 0; i < DOT_COUNT; i++) {
-            const dot = dots[i];
-            
-            // Move the dot
-            dot.x += dot.vx;
-            dot.y += dot.vy;
-            
-            // Bounce off the edges
-            if (dot.x <= 0 || dot.x >= backgroundRef.value?.width) dot.vx *= -1;
-            if (dot.y <= 0 || dot.y >= backgroundRef.value?.height) dot.vy *= -1;
+function animate() {
+  if (!ctx || !backgroundRef.value) return;
 
-            // Draw the dot
-            ctx.beginPath();
-            ctx.arc(dot.x, dot.y, 3, 0, Math.PI * 2);
-            ctx.fillStyle = prefersLightMode.value ? '#000000' : '#ffffff';
-            ctx.fill();
-            
-            // Draw lines between dots that are close enough
-            for (let j = i + 1; j < DOT_COUNT; j++) {
-                const otherDot = dots[j];
-                const dx = dot.x - otherDot.x;
-                const dy = dot.y - otherDot.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < MAX_DISTANCE) {
-                    ctx.beginPath();
-                    ctx.moveTo(dot.x, dot.y);
-                    ctx.lineTo(otherDot.x, otherDot.y);
-                    ctx.strokeStyle = `rgba(${prefersLightMode.value ? '0, 0, 0' : '255, 255, 255'}, ${1 - distance / MAX_DISTANCE})`; // Fade based on distance
-                    ctx.lineWidth = 0.5;
-                    ctx.stroke();
-                }
-            }
-        }
+  const width = backgroundRef.value.width;
+  const height = backgroundRef.value.height;
+
+  ctx.clearRect(0, 0, width, height);
+
+  // Draw dots and lines
+  for (let i = 0; i < DOT_COUNT; i++) {
+    const dot = dots[i];
+
+    // Move dot
+    dot.x += dot.vx;
+    dot.y += dot.vy;
+
+    // Bounce off edges
+    if (dot.x <= 0 || dot.x >= width) dot.vx *= -1;
+    if (dot.y <= 0 || dot.y >= height) dot.vy *= -1;
+
+    // Draw dot
+    ctx.beginPath();
+    ctx.arc(dot.x, dot.y, 3, 0, Math.PI * 2);
+    ctx.fillStyle = prefersLightMode.value ? '#000' : '#fff';
+    ctx.fill();
+
+    // Draw lines to close dots
+    for (let j = i + 1; j < DOT_COUNT; j++) {
+      const otherDot = dots[j];
+      const dx = dot.x - otherDot.x;
+      const dy = dot.y - otherDot.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < MAX_DISTANCE) {
+        ctx.beginPath();
+        ctx.moveTo(dot.x, dot.y);
+        ctx.lineTo(otherDot.x, otherDot.y);
+        const alpha = 1 - dist / MAX_DISTANCE;
+        const color = prefersLightMode.value ? `rgba(0,0,0,${alpha})` : `rgba(255,255,255,${alpha})`;
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
     }
-    
-    requestAnimationFrame(initAnimation);
+  }
+
+  animationFrameId = requestAnimationFrame(animate);
 }
 
-// Initialize the canvas size on load and resize
-window.addEventListener('resize', resizeBackground);
-
-// Start the animation and init the background.
 onMounted(() => {
-    // Attach the background to the body so that it can be behind the content.
-    document.body.appendChild(backgroundRef.value);
-    ctx = backgroundRef.value?.getContext('2d');
+  if (!backgroundRef.value) return;
 
-    // Init the background
-    resizeBackground();
-    initBackgroundDots();
-    initAnimation();
+  // Get context
+  ctx = backgroundRef.value.getContext('2d');
+
+  // Set initial size and dots
+  resizeBackground();
+  initBackgroundDots();
+
+  // Start animation
+  animate();
+
+  // Listen for resize events to update canvas size and dots
+  window.addEventListener('resize', resizeBackground);
+});
+
+onBeforeUnmount(() => {
+  // Cleanup animation and event listener
+  if (animationFrameId) cancelAnimationFrame(animationFrameId);
+  window.removeEventListener('resize', resizeBackground);
 });
 </script>
 
 <template>
-    <canvas ref="backgroundRef" class="background"></canvas>
+  <canvas ref="backgroundRef" class="background"></canvas>
 </template>
 
-<style lang="less" scoped>
+<style scoped lang="less">
 .background {
-    display: block;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: -1;
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none; /* Ensure canvas doesn't block interactions */
 }
 
 @media screen and (max-width: @breakpoint-mobile) {
