@@ -1,12 +1,12 @@
 <template>
-    <Transition name="modal-transition">
-        <div v-show="showModal" ref="modalRef" class="modal">
+    <Transition name="modal-transition" @before-leave="animationStarted" @before-enter="animationStarted" @after-enter="animationFinished">
+        <div v-show="showModal" ref="modalRef" class="modal" @click.self="backHandler">
             <div class="modal-content">
                 <div class="modal-heading">
                     <button class="modal-back-button transparent-button" @click="backHandler"><v-icon name="md-arrowback-round" scale="1.5"/></button>
                     <h1 class="modal-heading-text">{{ props.headingText }}</h1>
                 </div>
-                <div class="modal-content-slot">
+                <div ref="modalContent">
                     <slot name="content" />
                 </div>
             </div>
@@ -25,7 +25,16 @@ const props = defineProps({
 });
 
 const modalRef = ref(null);
+const modalContent = ref(null);
 const showModal = ref(false);
+
+function animationStarted() {
+    modalContent.value.style.overflow = 'hidden';
+}
+
+function animationFinished() {
+    modalContent.value.style.overflow = 'auto';
+}
 
 function backHandler() {
     showModal.value = false;
@@ -34,7 +43,7 @@ function backHandler() {
 
 function showModalHandler() {
     showModal.value = true;
-    document.body.style.overflow = 'hidden'; // Restore background scroll
+    document.body.style.overflow = 'hidden'; // Stop background scroll
 }
 defineExpose({ showModalHandler });
 
@@ -122,10 +131,6 @@ onMounted(() => {
     font-size: x-large;
     margin: 0;
     padding-top: 2px;
-}
-
-.modal-content-slot {
-    overflow: auto;
 }
 
 @media screen and (max-width: @breakpoint-mobile) {
