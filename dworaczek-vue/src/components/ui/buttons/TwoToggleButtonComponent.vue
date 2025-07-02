@@ -67,8 +67,4 @@ function toggleButton() {
 .toggle-button:hover.toggle-transparent > .toggle-icon {
     fill: @dworaczek-green;
 }
-
-.toggle-button:hover > .toggle-icon {
-    fill: @dworaczek-gray;
-}
 </style>
