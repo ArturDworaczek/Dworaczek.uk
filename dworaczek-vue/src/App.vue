@@ -1,3 +1,11 @@
+<template>
+  <background-component />
+  <header-component ref="headerRef" />
+  <router-view />
+  <scroll-top-button-component v-if="showScrollTop" />
+  <footer-component />
+</template>
+
 <script setup>
 import BackgroundComponent from './components/ui/backgrounds/BackgroundDotsComponent.vue';
 import HeaderComponent from './components/core/HeaderComponent.vue';
@@ -30,14 +38,6 @@ onUnmounted(() => {
   document.removeEventListener("scroll", showScrollTopHandler);
 });
 </script>
-
-<template>
-  <background-component />
-  <header-component ref="headerRef" />
-  <router-view />
-  <scroll-top-button-component v-if="showScrollTop" />
-  <footer-component />
-</template>
 
 <style lang="less">
 div {

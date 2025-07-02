@@ -1,3 +1,25 @@
+<template>
+    <panel-component class="previous-experience" :icon="{ name: 'md-workhistory', scale: 1.25 }" :heading="{ text: 'Work Experience', size: 'medium' }">
+        <template #content>
+            <component :is="currentModal" ref="experienceModalRef" />
+            <div class="previous-experience-details">
+                <div v-for="(experience, index) in props.workExperience" :key="index" class="previous-experience-detail" @click="showModalHandler(experience.modal)">
+                    <img width="40" height="40" :alt="experience.logoAlt" :src="experience.logo" class="previous-experience-logo background-secondary" />
+                    <div class="previous-experience-info">
+                        <span class="previous-experience-company">{{ experience.company }}</span>
+                        <span class="previous-experience-position">{{ experience.position }}</span>
+                    </div>
+                    <span class="previous-experience-service">{{ experience.service }}</span>
+                </div>
+            </div>
+            <a href="/Artur Dworaczek - CV.pdf" download class="button">
+                Download CV
+                <v-icon name="hi-download" scale="1" />
+            </a>
+        </template>
+    </panel-component>
+</template>
+
 <script setup>
 import PanelComponent from '@/components/core/PanelComponent.vue';
 import { ref, shallowRef } from 'vue';
@@ -22,28 +44,6 @@ function showModalHandler(modal) {
     }
 }
 </script>
-
-<template>
-    <panel-component class="previous-experience" :icon="{ name: 'md-workhistory', scale: 1.25 }" :heading="{ text: 'Work Experience', size: 'medium' }">
-        <template #content>
-            <component :is="currentModal" ref="experienceModalRef" />
-            <div class="previous-experience-details">
-                <div v-for="(experience, index) in props.workExperience" :key="index" class="previous-experience-detail" @click="showModalHandler(experience.modal)">
-                    <img width="40" height="40" :alt="experience.logoAlt" :src="experience.logo" class="previous-experience-logo background-secondary" />
-                    <div class="previous-experience-info">
-                        <span class="previous-experience-company">{{ experience.company }}</span>
-                        <span class="previous-experience-position">{{ experience.position }}</span>
-                    </div>
-                    <span class="previous-experience-service">{{ experience.service }}</span>
-                </div>
-            </div>
-            <a href="/Artur Dworaczek - CV.pdf" download class="button">
-                Download CV
-                <v-icon name="hi-download" scale="1" />
-            </a>
-        </template>
-    </panel-component>
-</template>
 
 <style lang="less" scoped>
 .previous-experience:deep(.panel-heading) {

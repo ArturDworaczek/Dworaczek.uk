@@ -1,3 +1,7 @@
+<template>
+  <canvas ref="backgroundRef" class="background"></canvas>
+</template>
+
 <script setup>
 import { onMounted, onBeforeUnmount, ref, computed } from 'vue';
 
@@ -102,10 +106,6 @@ onBeforeUnmount(() => {
   window.removeEventListener('resize', resizeBackground);
 });
 </script>
-
-<template>
-  <canvas ref="backgroundRef" class="background"></canvas>
-</template>
 
 <style scoped lang="less">
 .background {

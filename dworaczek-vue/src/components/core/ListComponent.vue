@@ -1,12 +1,3 @@
-<script setup>
-const props = defineProps({
-    list: {
-        type: Array,
-        required: true
-    }
-});
-</script>
-
 <template>
     <div class="list">
         <div v-for="(entry, index) in props.list" :key="'list-component-entry-' + index" class="list-entry">
@@ -15,6 +6,15 @@ const props = defineProps({
         </div>
     </div>
 </template>
+
+<script setup>
+const props = defineProps({
+    list: {
+        type: Array,
+        required: true
+    }
+});
+</script>
 
 <style lang="less" scoped>
 .list {

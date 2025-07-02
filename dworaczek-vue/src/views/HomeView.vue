@@ -1,3 +1,26 @@
+<template>
+  <div class="home">
+    <div class="home-intro" v-motion-slide-visible-top>
+      <img src="@/assets/images/me.webp" width="100" height="100" alt="Photo of Artur Dworaczek" class="home-intro-me-image">
+      <h1 class="home-intro-heading">Software developer, founder,<br/>and amateur mechanic.</h1>
+      <p>I'm a software developer and founder of <a href="https://deverse.uk/" target="_blank">Deverse</a>, a software as service provider based in the United Kingdom, where we develop technologies that empower regular people and businesses to achieve their goals.</p>
+      <div class="home-intro-links">
+        <a aria-label="LinkedIn" href="https://www.linkedin.com/in/arturdwora/" target="_blank"><v-icon name="bi-linkedin" scale="1.75" /></a>
+        <a aria-label="Github" href="https://github.com/arturdworaczek" target="_blank"><v-icon name="bi-github" scale="1.75" /></a>
+      </div>
+    </div>
+
+    <div class="home-info">
+      <div class="home-info-left" v-motion-slide-visible-left>
+        <tech-stack-component :tech-stack="techStack" />
+      </div>
+      <div class="home-info-right" v-motion-slide-visible-right>
+        <work-experience-component :work-experience="workExperience" />
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup>
 import WorkExperienceComponent from '@/components/misc/WorkExperienceComponent.vue';
 import TechStackComponent from '@/components/misc/TechStackComponent.vue';
@@ -30,29 +53,6 @@ const workExperience = [
   { logoAlt: 'Fiverr Logo', logo: require('@/assets/logos/fiverr.webp'), company: 'Fiverr', position: 'Software Freelancer', service: 'Jun 2018 - Aug 2019', modal: FiverrModalComponent }
 ];
 </script>
-
-<template>
-  <div class="home">
-    <div class="home-intro" v-motion-slide-visible-top>
-      <img src="@/assets/images/me.webp" width="100" height="100" alt="Photo of Artur Dworaczek" class="home-intro-me-image">
-      <h1 class="home-intro-heading">Software developer, founder,<br/>and amateur mechanic.</h1>
-      <p>I'm a software developer and founder of <a href="https://deverse.uk/" target="_blank">Deverse</a>, a software as service provider based in the United Kingdom, where we develop technologies that empower regular people and businesses to achieve their goals.</p>
-      <div class="home-intro-links">
-        <a aria-label="LinkedIn" href="https://www.linkedin.com/in/arturdwora/" target="_blank"><v-icon name="bi-linkedin" scale="1.75" /></a>
-        <a aria-label="Github" href="https://github.com/arturdworaczek" target="_blank"><v-icon name="bi-github" scale="1.75" /></a>
-      </div>
-    </div>
-
-    <div class="home-info">
-      <div class="home-info-left" v-motion-slide-visible-left>
-        <tech-stack-component :tech-stack="techStack" />
-      </div>
-      <div class="home-info-right" v-motion-slide-visible-right>
-        <work-experience-component :work-experience="workExperience" />
-      </div>
-    </div>
-  </div>
-</template>
 
 <style lang="less" scoped>
 .home {

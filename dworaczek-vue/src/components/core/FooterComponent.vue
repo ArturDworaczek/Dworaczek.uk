@@ -1,10 +1,3 @@
-<script setup>
-import BackgroundBeamsComponent from '@/components/ui/backgrounds/BackgroundBeamsComponent.vue';
-import { computed } from 'vue';
-
-const currentYear = computed(() => new Date().getFullYear());
-</script>
-
 <template>
     <footer v-motion-slide-visible-bottom>
         <div class="footer-container border background-primary">
@@ -37,6 +30,13 @@ const currentYear = computed(() => new Date().getFullYear());
         </div>
     </footer>
 </template>
+
+<script setup>
+import BackgroundBeamsComponent from '@/components/ui/backgrounds/BackgroundBeamsComponent.vue';
+import { computed } from 'vue';
+
+const currentYear = computed(() => new Date().getFullYear());
+</script>
   
 <style lang="less" scoped>
 .footer-container {

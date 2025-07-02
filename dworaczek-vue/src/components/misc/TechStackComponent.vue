@@ -1,14 +1,3 @@
-<script setup>
-import PanelComponent from '@/components/core/PanelComponent.vue';
-
-const props = defineProps({
-    techStack: {
-        type: Array,
-        required: true
-    }
-});
-</script>
-
 <template>
     <panel-component :icon="{ name: 'gi-stack', scale: 1.5 }" :heading="{ text: 'Current Technology', size: 'medium' }">
         <template #content>
@@ -26,6 +15,17 @@ const props = defineProps({
         </template>
     </panel-component>
 </template>
+
+<script setup>
+import PanelComponent from '@/components/core/PanelComponent.vue';
+
+const props = defineProps({
+    techStack: {
+        type: Array,
+        required: true
+    }
+});
+</script>
 
 <style lang="less" scoped>
 .tech-stack-details {
