@@ -85,12 +85,12 @@ div {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: white;
+  background: @dworaczek-white-gray;
   border-radius: 5px;
 }
 
 [data-theme="dark"]::-webkit-scrollbar-thumb {
-  background: @dworaczek-gray;
+  background: @dworaczek-light-gray;
 }
 
 * {
