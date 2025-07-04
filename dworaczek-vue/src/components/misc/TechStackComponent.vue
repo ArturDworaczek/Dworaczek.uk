@@ -84,6 +84,7 @@ watch(prefersLightMode, updateRenderedTechStack);
     filter: grayscale(1);
     height: 50%;
     width: 50%;
+    max-width: 100px;
 }
 
 .tech-stack-info {
