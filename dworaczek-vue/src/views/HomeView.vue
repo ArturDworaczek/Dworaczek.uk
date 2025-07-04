@@ -41,8 +41,8 @@ const techStack = [
   { logo: 'co-amazon-aws', name: 'AWS', description: 'Hosting' },
   { logo: 'co-unreal-engine', name: 'Unreal Engine', description: 'Game Engine' },
   { logo: 'co-cplusplus', name: 'C++', description: 'Low-level Language' },
-  { logo: 'vi-file-type-flutter', name: 'Flutter', description: 'App Development' },
-  { logo: 'vi-file-type-firebase', name: 'Firebase', description: 'Backend Platform' }
+  { logo: 'vi-file-type-flutter', name: 'Flutter', description: 'App Development', lightOpacity: 0.1 },
+  { logo: 'vi-file-type-firebase', name: 'Firebase', description: 'Backend Platform', lightOpacity: 0.125 }
 ];
 
 const workExperience = [

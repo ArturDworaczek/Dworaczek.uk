@@ -2,9 +2,9 @@
     <panel-component :icon="{ name: 'gi-stack', scale: 1.5 }" :heading="{ text: 'Current Technology', size: 'medium' }">
         <template #content>
             <div class="tech-stack-details">
-                <div v-for="(tech, index) in props.techStack" :key="'tech-stack-' + index" class="tech-stack-detail border">
+                <div v-for="(tech, index) in renderedTechStack" :key="'tech-stack-' + index" class="tech-stack-detail border">
                     <div class="tech-stack-logo-container">
-                        <v-icon class="tech-stack-icon" :name="tech.logo" />
+                        <v-icon class="tech-stack-icon" :style="{ 'opacity': tech.effectiveOpacity}" :name="tech.logo" />
                     </div>
                     <div class="tech-stack-info">
                         <span class="tech-stack-name">{{ tech.name }}</span>
@@ -17,6 +17,8 @@
 </template>
 
 <script setup>
+import { ref, watch } from 'vue';
+import { useThemeMode } from '@/composables/themeComposable';
 import PanelComponent from '@/components/core/PanelComponent.vue';
 
 const props = defineProps({
@@ -25,12 +27,40 @@ const props = defineProps({
         required: true
     }
 });
+
+const { prefersLightMode } = useThemeMode();
+const renderedTechStack = ref([]);
+
+function updateRenderedTechStack() {
+  renderedTechStack.value = props.techStack.map((tech) => {
+    let opacity = 0.05;
+
+    if (tech.opacity) {
+      opacity = tech.opacity;
+    } else if (prefersLightMode.value && typeof tech.lightOpacity === 'number') {
+      opacity = tech.lightOpacity;
+    } else if (!prefersLightMode.value && typeof tech.darkOpacity === 'number') {
+      opacity = tech.darkOpacity;
+    }
+
+    return {
+      ...tech,
+      effectiveOpacity: opacity,
+    };
+  });
+}
+
+// Run initially
+updateRenderedTechStack();
+
+// Re-run on theme change
+watch(prefersLightMode, updateRenderedTechStack);
 </script>
 
 <style lang="less" scoped>
 .tech-stack-details {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
 }
 
@@ -40,7 +70,6 @@ const props = defineProps({
     display: flex;
     gap: 1rem;
     align-items: center;
-    width: calc((100% / 2) - 34px - 1rem);
 }
 
 .tech-stack-logo-container {
@@ -53,7 +82,6 @@ const props = defineProps({
 
 .tech-stack-icon {
     filter: grayscale(1);
-    opacity: 0.05;
     height: 50%;
     width: 50%;
 }
