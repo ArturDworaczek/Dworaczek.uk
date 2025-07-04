@@ -26,11 +26,11 @@ import WorkExperienceComponent from '@/components/misc/WorkExperienceComponent.v
 import TechStackComponent from '@/components/misc/TechStackComponent.vue';
 
 // Modals
-import FinovaModalComponent from '@/components/modals/workexperience/FinovaModalComponent.vue';
-import DeverseModalComponent from '@/components/modals/workexperience/DeverseModalComponent.vue';
-import IMDModalComponent from '@/components/modals/workexperience/IMDModalComponent.vue';
-import OMModalComponent from '@/components/modals/workexperience/OMModalComponent.vue';
-import FiverrModalComponent from '@/components/modals/workexperience/FiverrModalComponent.vue';
+import FinovaModalComponent from '@/components/modals/work-experience/FinovaModalComponent.vue';
+import DeverseModalComponent from '@/components/modals/work-experience/DeverseModalComponent.vue';
+import IMDModalComponent from '@/components/modals/work-experience/IMDModalComponent.vue';
+import OMModalComponent from '@/components/modals/work-experience/OMModalComponent.vue';
+import FiverrModalComponent from '@/components/modals/work-experience/FiverrModalComponent.vue';
 
 const techStack = [
   { logo: 'si-vuedotjs', name: 'Vue.js', description: 'JS Framework' },

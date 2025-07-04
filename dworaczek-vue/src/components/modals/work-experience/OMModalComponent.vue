@@ -33,7 +33,7 @@
 
 <script setup>
 import ModalComponent from '@/components/modals/ModalComponent.vue';
-import ModalContentComponent from '@/components/modals/workexperience/ModalContentComponent.vue';
+import ModalContentComponent from '@/components/modals/work-experience/ModalContentComponent.vue';
 import { ref } from 'vue';
 
 const modalRef = ref(null);
