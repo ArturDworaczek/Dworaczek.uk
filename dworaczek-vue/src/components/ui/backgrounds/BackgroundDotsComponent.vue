@@ -3,9 +3,10 @@
 </template>
 
 <script setup>
-import { onMounted, onBeforeUnmount, ref, computed } from 'vue';
+import { onMounted, onBeforeUnmount, ref } from 'vue';
+import { useThemeMode } from '@/composables/ThemeComposable';
 
-const prefersLightMode = computed(() => document.body.getAttribute('data-theme') === 'light');
+const { prefersLightMode } = useThemeMode();
 const backgroundRef = ref(null);
 
 const DOT_COUNT = 250;

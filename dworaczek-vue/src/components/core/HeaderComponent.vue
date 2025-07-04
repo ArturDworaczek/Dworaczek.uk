@@ -15,10 +15,11 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
 import TwoToggleButtonComponent from '@/components/ui/buttons/TwoToggleButtonComponent.vue';
 
-const prefersLightMode = computed(() => window.matchMedia('(prefers-color-scheme: light)').matches);
+import { useThemeMode } from '@/composables/ThemeComposable';
+
+const { prefersLightMode } = useThemeMode();
 
 function toggleViewModes() {
     if (document.body.getAttribute('data-theme') === 'dark') {
