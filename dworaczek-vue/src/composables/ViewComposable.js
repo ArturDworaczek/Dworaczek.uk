@@ -1,4 +1,4 @@
-export default function useView() {
+export function useView() {
     function percentageSeen(element) {
         if (typeof element != 'undefined')
         {

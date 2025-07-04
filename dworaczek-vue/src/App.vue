@@ -1,5 +1,5 @@
 <template>
-  <background-component />
+  <background-dots-component v-if="isDesktop" />
   <header-component ref="headerRef" />
   <router-view />
   <scroll-top-button-component v-if="showScrollTop" />
@@ -7,15 +7,17 @@
 </template>
 
 <script setup>
-import BackgroundComponent from './components/ui/backgrounds/BackgroundDotsComponent.vue';
+import BackgroundDotsComponent from './components/ui/backgrounds/BackgroundDotsComponent.vue';
 import HeaderComponent from './components/core/HeaderComponent.vue';
 import FooterComponent from './components/core/FooterComponent.vue';
 import ScrollTopButtonComponent from './components/ui/buttons/ScrollTopButtonComponent.vue';
 
 import { onMounted, onUnmounted, ref } from 'vue';
-import useView from '@/composables/ViewComposable';
+import { useScreenSize } from '@/composables/ScreenComposable';
+import { useView } from '@/composables/ViewComposable';
 
 const { percentageSeen } = useView();
+const { isDesktop } = useScreenSize();
 
 // Init the data-theme attribute based on the user's system preferences.
 document.body.setAttribute('data-theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');

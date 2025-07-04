@@ -118,10 +118,4 @@ onBeforeUnmount(() => {
   z-index: -1;
   pointer-events: none; /* Ensure canvas doesn't block interactions */
 }
-
-@media screen and (max-width: @breakpoint-mobile) {
-  .background {
-    display: none;
-  }
-}
 </style>

@@ -18,7 +18,7 @@
 
 <script setup>
 import { ref, watch } from 'vue';
-import { useThemeMode } from '@/composables/themeComposable';
+import { useThemeMode } from '@/composables/ThemeComposable';
 import PanelComponent from '@/components/core/PanelComponent.vue';
 
 const props = defineProps({
