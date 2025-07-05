@@ -19,8 +19,8 @@ addIcons( CoDocker, FaGitAlt, SiVuedotjs, MdJavascript, SiCsharp, CoCplusplus, C
 import { IoCheckmarkCircle, FaRegularTimesCircle, PrTimes } from 'oh-vue-icons/icons';
 addIcons( IoCheckmarkCircle, FaRegularTimesCircle, PrTimes );
 // Misc Icons
-import { HiDownload, FaTimesCircle, MdWorkhistory, GiStack, MdVerticalaligntopRound, MdArrowbackRound, AiOpenAccessSquare, RiFileList3Fill, RiUserStarFill, OiDotFill, MdDescriptionRound } from 'oh-vue-icons/icons';
-addIcons( HiDownload, FaTimesCircle, MdWorkhistory, GiStack, MdVerticalaligntopRound, MdArrowbackRound, AiOpenAccessSquare, RiFileList3Fill, RiUserStarFill, OiDotFill, MdDescriptionRound );
+import { HiDownload, FaTimesCircle, MdWorkhistory, GiStack, MdVerticalaligntopRound, MdArrowbackRound, AiOpenAccessSquare, RiFileList3Fill, RiUserStarFill, OiDotFill, MdDescriptionRound, PrCircleOn } from 'oh-vue-icons/icons';
+addIcons( HiDownload, FaTimesCircle, MdWorkhistory, GiStack, MdVerticalaligntopRound, MdArrowbackRound, AiOpenAccessSquare, RiFileList3Fill, RiUserStarFill, OiDotFill, MdDescriptionRound, PrCircleOn );
 
 // Create Vue App
 const app = createApp({
