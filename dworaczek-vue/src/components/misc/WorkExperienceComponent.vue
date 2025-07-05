@@ -14,8 +14,9 @@
                     </div>
                     <timeline-component
                         :is-first="index === 0" :is-last="index === (props.workExperience.length - 1)" 
-                        :is-active="experience.service.includes('Current')" :is-previous-active="index === 0 || props.workExperience[index - 1].service.includes('Current')"
-                        :is-next-active="index === (props.workExperience.length - 1) || props.workExperience[index + 1].service.includes('Current')"
+                        :is-active="isCurrentExperience(experience)" 
+                        :is-previous-active="isPreviousExperienceCurrent(index)"
+                        :is-next-active="isNextExperienceCurrent(index)"
                     />
                 </div>
             </div>
@@ -50,6 +51,18 @@ function showModalHandler(modal) {
             experienceModalRef.value.getModal().showModalHandler();
         }, 100);
     }
+}
+
+function isCurrentExperience(experience) {
+    return experience?.service?.includes('Current') ?? false;
+}
+
+function isPreviousExperienceCurrent(index) {
+    return index === 0 || props.workExperience[index - 1].service.includes('Current');
+}
+
+function isNextExperienceCurrent(index) {
+    return index === (props.workExperience.length - 1) || props.workExperience[index + 1].service.includes('Current');
 }
 </script>
 
