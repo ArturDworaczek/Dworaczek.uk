@@ -1,12 +1,12 @@
 <template>
     <Transition name="modal-transition" @before-leave="animationStarted" @before-enter="animationStarted" @after-enter="animationFinished">
         <div v-show="showModal" ref="modalRef" class="modal" @click.self="backHandler">
-            <div class="modal-content">
+            <div class="modal-content-container">
                 <div class="modal-heading">
                     <button class="modal-back-button transparent-button" @click="backHandler"><v-icon name="md-arrowback-round" scale="1.5"/></button>
                     <h1 class="modal-heading-text">{{ props.headingText }}</h1>
                 </div>
-                <div ref="modalContent">
+                <div class="modal-content" ref="modalContent">
                     <slot name="content" />
                 </div>
             </div>
@@ -70,13 +70,13 @@ onMounted(() => {
 
 .modal-transition-enter-active {
     animation: modal-blur-animation 0.75s;
-    .modal-content { 
+    .modal-content-container { 
         animation: modal-animation 0.75s;
     }
 }
 .modal-transition-leave-active {
     animation: modal-blur-animation 0.75s reverse;
-    .modal-content { 
+    .modal-content-container { 
         animation: modal-animation 0.75s reverse;
     }
 }
@@ -96,7 +96,7 @@ onMounted(() => {
     to { height: calc(100% - 40px); width: 100%; opacity: 1; }
 }
 
-.modal-content {
+.modal-content-container {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -109,8 +109,12 @@ onMounted(() => {
     background-color: white;
     border: 1px solid @dworaczek-white-gray;
     overflow: hidden;
+
+    .modal-content {
+        padding: 0 10px;
+    }
 }
-[data-theme="dark"] .modal-content {
+[data-theme="dark"] .modal-content-container {
     background-color: @dworaczek-gray;
     border: 1px solid @dworaczek-light-gray;
 }
@@ -134,7 +138,7 @@ onMounted(() => {
 }
 
 @media screen and (max-width: @breakpoint-mobile) {
-    .modal-content {
+    .modal-content-container {
         width: 100%;
         height: calc(100% - 40px);
         max-height: calc(100% - 40px);
@@ -142,13 +146,13 @@ onMounted(() => {
     }
     .modal-transition-enter-active {
         animation: modal-blur-animation 0.5s reverse;
-        .modal-content { 
+        .modal-content-container { 
             animation: modal-animation-mobile 0.5s;
         }
     }
     .modal-transition-leave-active {
         animation: modal-blur-animation 0.5s reverse;
-        .modal-content { 
+        .modal-content-container { 
             animation: modal-animation-mobile 0.5s reverse;
         }
     }
