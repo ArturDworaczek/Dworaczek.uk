@@ -24,14 +24,14 @@ module.exports = defineConfig({
   },
 
   devServer: {
-    liveReload: false,
-    hot: true,
+    liveReload: false, // Prevent full page reload
+    hot: true, // Enable hot reloading
     host: '0.0.0.0',
     client: {
-      webSocketURL: 'ws://localhost:8080/ws'
+      webSocketURL: 'ws://localhost:8080/ws' // WebSocket URL for HMR
     },
     watchFiles: {
-      paths: ['src/**/*.js', 'src/**/*.vue', 'src/**/*.json', 'src/views/*.vue'],
+      paths: ['src/**/*.js', 'src/**/*.vue', 'src/**/*.json', 'src/views/*.vue'], // Watch for changes in these files
       options: {
         usePolling: true,
       }
