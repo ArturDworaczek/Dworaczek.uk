@@ -2,7 +2,6 @@
   <div class="home">
     <div class="home-intro" v-motion-slide-visible-top>
       <img src="@/assets/images/me.webp" width="100" height="100" alt="Photo of Artur Dworaczek" class="home-intro-me-image">
-      <h1 class="home-intro-heading">Software developer, founder,<br/>and amateur mechanic.</h1>
       <p>I'm a software developer and founder of <a href="https://deverse.uk/" target="_blank">Deverse</a>, a software as service provider based in the United Kingdom, where we develop technologies that empower regular people and businesses to achieve their goals.</p>
       <div class="home-intro-links">
         <a aria-label="LinkedIn" href="https://www.linkedin.com/in/arturdwora/" target="_blank"><v-icon name="bi-linkedin" scale="1.75" /></a>
