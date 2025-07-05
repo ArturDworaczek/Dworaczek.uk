@@ -79,6 +79,14 @@ function isNextExperienceCurrent(index) {
     padding-right: 40px;
 }
 
+.previous-experience-container:hover {
+    cursor: pointer;
+    animation: 0.35s background-right-left-animation-light forwards;
+}
+[data-theme="dark"] .previous-experience-container:hover {
+    animation: 0.35s background-right-left-animation-dark forwards;
+}
+
 .previous-experience-details {
     margin: 0 -20px 1rem -20px;
     display: flex;
