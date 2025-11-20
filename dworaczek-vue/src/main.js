@@ -13,8 +13,8 @@ addIcons( BiGithub, BiLinkedin );
 import { BiMoonStars, BiSun } from 'oh-vue-icons/icons';
 addIcons( BiMoonStars, BiSun );
 // Tech Icons
-import { CoDocker, FaGitAlt, SiVuedotjs, MdJavascript, SiCsharp, CoCplusplus, CoLaravel, FaDatabase, CoUnrealEngine, CoAmazonAws, ViFileTypeFlutter, ViFileTypeFirebase } from 'oh-vue-icons/icons';
-addIcons( CoDocker, FaGitAlt, SiVuedotjs, MdJavascript, SiCsharp, CoCplusplus, CoLaravel, FaDatabase, CoUnrealEngine, CoAmazonAws, ViFileTypeFlutter, ViFileTypeFirebase );
+import { CoDocker, FaGitAlt, SiVuedotjs, MdJavascript, SiCsharp, CoCplusplus, CoLaravel, FaDatabase, CoUnrealEngine, CoAmazonAws, CoReact, SiSupabase } from 'oh-vue-icons/icons';
+addIcons( CoDocker, FaGitAlt, SiVuedotjs, MdJavascript, SiCsharp, CoCplusplus, CoLaravel, FaDatabase, CoUnrealEngine, CoAmazonAws, CoReact, SiSupabase );
 // Validation Icons
 import { IoCheckmarkCircle, FaRegularTimesCircle, PrTimes } from 'oh-vue-icons/icons';
 addIcons( IoCheckmarkCircle, FaRegularTimesCircle, PrTimes );

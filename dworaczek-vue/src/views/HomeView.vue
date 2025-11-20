@@ -35,14 +35,14 @@ import FiverrModalComponent from '@/components/modals/work-experience/FiverrModa
 const techStack = [
   { logo: 'si-vuedotjs', name: 'Vue.js', description: 'JS Framework' },
   { logo: 'co-laravel', name: 'Laravel', description: 'PHP Framework' },
-  { logo: 'fa-database', name: 'MySQL', description: 'Databases' },
+  { logo: 'fa-database', name: 'MariaDB', description: 'Databases' },
   { logo: 'co-docker', name: 'Docker', description: 'Environments' },
   { logo: 'fa-git-alt', name: 'Git', description: 'Source Control' },
   { logo: 'co-amazon-aws', name: 'AWS', description: 'Hosting' },
   { logo: 'co-unreal-engine', name: 'Unreal Engine', description: 'Game Engine' },
   { logo: 'co-cplusplus', name: 'C++', description: 'Low-level Language' },
-  { logo: 'vi-file-type-flutter', name: 'Flutter', description: 'App Development', lightOpacity: 0.1 },
-  { logo: 'vi-file-type-firebase', name: 'Firebase', description: 'Backend Platform', lightOpacity: 0.125 }
+  { logo: 'co-react', name: 'React Native', description: 'App Development' },
+  { logo: 'si-supabase', name: 'Supabase', description: 'Backend Platform' }
 ];
 
 const workExperience = [
