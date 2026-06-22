@@ -46,7 +46,7 @@ const techStack = [
 ];
 
 const workExperience = [
-  { logoAlt: 'Finova Logo', logo: require('@/assets/logos/finova.webp'), company: 'Finova', position: 'Frontend Developer', service: 'Jul 2024 - Current', modal: FinovaModalComponent },
+  { logoAlt: 'Finova Logo', logo: require('@/assets/logos/finova.webp'), company: 'Finova', position: 'Software Engineer', service: 'Jul 2024 - Current', modal: FinovaModalComponent },
   { logoAlt: 'Deverse Logo', logo: require('@/assets/logos/deverse.webp'), company: 'Deverse', position: 'Founder', service: 'Jun 2021 - Current', modal: DeverseModalComponent },
   { logoAlt: 'IMD Interactive Logo', logo: require('@/assets/logos/imd.webp'), company: 'IMD Interactive', position: 'Freelance Game Developer', service: 'Dec 2020 - Jan 2024', modal: IMDModalComponent },
   { logoAlt: 'Old Mill Logo', logo: require('@/assets/logos/om.svg'), company: 'Old Mill', position: 'Software Developer', service: 'Oct 2019 - Jun 2024', modal: OMModalComponent },
