@@ -18,12 +18,17 @@
         <work-experience-component :work-experience="workExperience" />
       </div>
     </div>
+
+    <div class="home-projects" v-motion-slide-visible-bottom>
+      <projects-component :projects="projects" />
+    </div>
   </div>
 </template>
 
 <script setup>
 import WorkExperienceComponent from '@/components/misc/WorkExperienceComponent.vue';
 import TechStackComponent from '@/components/misc/TechStackComponent.vue';
+import ProjectsComponent from '@/components/misc/ProjectsComponent.vue';
 
 // Modals
 import FinovaModalComponent from '@/components/modals/work-experience/FinovaModalComponent.vue';
@@ -31,6 +36,7 @@ import DeverseModalComponent from '@/components/modals/work-experience/DeverseMo
 import IMDModalComponent from '@/components/modals/work-experience/IMDModalComponent.vue';
 import OMModalComponent from '@/components/modals/work-experience/OMModalComponent.vue';
 import FiverrModalComponent from '@/components/modals/work-experience/FiverrModalComponent.vue';
+import BimmerManagerModalComponent from '@/components/modals/projects/BimmerManagerModalComponent.vue';
 
 const techStack = [
   { logo: 'si-vuedotjs', name: 'Vue.js', description: 'JS Framework' },
@@ -52,13 +58,17 @@ const workExperience = [
   { logoAlt: 'Old Mill Logo', logo: require('@/assets/logos/om.svg'), company: 'Old Mill', position: 'Software Developer', service: 'Oct 2019 - Jun 2024', modal: OMModalComponent },
   { logoAlt: 'Fiverr Logo', logo: require('@/assets/logos/fiverr.webp'), company: 'Fiverr', position: 'Software Freelancer', service: 'Jun 2018 - Aug 2019', modal: FiverrModalComponent }
 ];
+
+const projects = [
+  { logoAlt: 'BimmerManager Logo', logo: require('@/assets/logos/bimmer-manager.png'), name: 'BimmerManager', tagline: 'Dealer-level BMW diagnostics, without the subscription.', status: 'Live on the App Store', modal: BimmerManagerModalComponent }
+];
 </script>
 
 <style lang="less" scoped>
 .home {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 2rem;
 }
 
 .home-intro {

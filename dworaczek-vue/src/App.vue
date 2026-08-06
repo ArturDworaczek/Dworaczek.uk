@@ -137,7 +137,7 @@ body[data-theme="dark"] {
 #app {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 2rem;
   justify-content: space-between;
   position: relative;
   font-family: 'Light';
@@ -253,12 +253,14 @@ a.button {
   height: 17px;
   border-bottom: 1px solid rgba(@dworaczek-light-gray, 0.35);
   border-left: 1px solid rgba(@dworaczek-light-gray, 0.75);
+  border-right: 1px solid rgba(white, 0.990);
 }
 [data-theme="dark"] a.button {
   color: @dworaczek-white-gray;
   background-image: linear-gradient(45deg, @dworaczek-gray, #1dbf73, @dworaczek-gray);
   border-bottom: 1px solid rgba(@dworaczek-white-gray, 0.35);
   border-left: 1px solid rgba(@dworaczek-white-gray, 0.75);
+  border-right: 1px solid rgba(@dworaczek-gray, 0.990);
 }
 
 a.button:disabled {
@@ -270,11 +272,12 @@ a.button:hover {
   cursor: pointer;
   color: @dworaczek-white-gray;
   background-position: -100% 100%;
-  border-left: 0;
+  border-left: 1px solid rgba(white, 0.975);
   border-right: 1px solid rgba(@dworaczek-light-gray, 0.35);
   border-bottom: 1px solid rgba(@dworaczek-light-gray, 0.75);
 }
 [data-theme="dark"] a.button:hover {
+  border-left: 1px solid rgba(@dworaczek-gray, 0.990);
   border-right: 1px solid rgba(@dworaczek-white-gray, 0.35);
   border-bottom: 1px solid rgba(@dworaczek-white-gray, 0.75);
 }
