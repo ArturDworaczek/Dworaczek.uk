@@ -18,7 +18,8 @@
                 ]"
 
                 :achievement-list="[
-                    { text: 'Sponsored by Epic Games, achieved over 250,000 downloads in February 2024.' },
+                    { text: 'Sponsored by Epic Games.' },
+                    { text: 'Achieved over 250,000 copies distributed through sales and Epic Games sponsorship deal in February 2024.' },
                     { text: 'Delivered prompt support and thorough plugin documentation for customers, ensuring maximum satisfaction.' },
                     { text: 'Enhanced the functionality of Unreal Engine blueprints by designing and developing custom plugins using C++, facilitating seamless integration with the Steam API.' },
                     { text: 'Achieved a 5-star rating from over 50 clients, demonstrating exceptional performance and customer satisfaction.' }
